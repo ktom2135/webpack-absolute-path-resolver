@@ -1,7 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using resolver;
 using Xunit;
 
 namespace resolver_test
@@ -21,19 +20,5 @@ namespace resolver_test
             Assert.Equal("@apps", config.AliasMapping[0].Name);
             Assert.Equal("C:\\root\\apps", config.AliasMapping[0].Path);
         }
-    }
-
-    public class Config
-    {
-        public string RootPath { get; set; }
-        public string Suffix { get; set; }
-        public string Prefix { get; set; }
-        public List<Mapping> AliasMapping { get; set; }
-    }
-
-    public class Mapping
-    {
-        public string Name { get; set; }
-        public string Path { get; set; }
     }
 }
