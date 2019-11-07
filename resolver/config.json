@@ -1,0 +1,15 @@
+{
+  "rootPath": "C:\root",
+  "suffix": ".jsx",
+  "prefix": "import ",
+  "aliasMapping": [
+    {
+      "name": "@apps",
+      "patch": "C:\\root\\apps"
+    },
+    {
+      "name": "@comp",
+      "patch": "C:\\root\\comp"
+    }
+  ]
+}
