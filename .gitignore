@@ -11,3 +11,11 @@
 /resolver-test/obj/Debug/netcoreapp2.2
 /resolver-test/obj
 /webpack-absolute-path-resolver/.idea/.idea.webpack-absolute-path-resolver/.idea
+new file:   .vs/webpack-absolute-path-resolver/DesignTimeBuild/.dtbcache
+new file:   .vs/webpack-absolute-path-resolver/v16/.suo
+deleted:    resolver-test/UnitTest1.cs
+new file:   resolver-test/config.json
+new file:   resolver-test/config_file_test.cs
+modified:   resolver-test/resolver-test.csproj
+modified:   resolver/config.json
+/.vs/webpack-absolute-path-resolver
