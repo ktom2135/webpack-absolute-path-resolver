@@ -11,7 +11,7 @@ namespace resolver_test
         public void should_load_config_file_correctly()
         {
             var confileFilePath = "config.json";
-            var fileContent = File.ReadAllText(confileFilePath);
+            var fileContent = FileUtil.GetConfigContent(confileFilePath);
             var config = JsonConvert.DeserializeObject<Config>(fileContent);
             Assert.Equal("C:\root", config.RootPath);
             Assert.Equal(".jsx", config.Suffix);
