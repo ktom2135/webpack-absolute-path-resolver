@@ -17,8 +17,8 @@ namespace resolver_test
             Assert.Equal(".jsx", config.Suffix);
             Assert.Equal("import ", config.Prefix);
             Assert.Equal(2, config.AliasMapping.Count);
-            Assert.Equal("@apps", config.AliasMapping[0].AliasName);
-            Assert.Equal("C:\\root\\apps", config.AliasMapping[0].MatchPath);
+            Assert.Equal("@apps", config.AliasMapping[0].Name);
+            Assert.Equal("C:\\root\\apps", config.AliasMapping[0].Path);
         }
     }
 }

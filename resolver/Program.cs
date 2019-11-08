@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace resolver
 {
@@ -6,7 +8,10 @@ namespace resolver
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var confileFilePath = "config.json";
+            var fileContent = FileUtil.GetConfigContent(confileFilePath);
+            var config = JsonConvert.DeserializeObject<Config>(fileContent);
+            var files = FileUtil.GetAllFiles(config);
         }
     }
 }

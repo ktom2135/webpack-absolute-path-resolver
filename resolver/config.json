@@ -1,6 +1,6 @@
 {
-  "rootPath": "C:\root",
-  "suffix": ".jsx",
+  "rootPath": "D:\\git\\myReactApp",
+  "suffix": ".js",
   "prefix": "import ",
   "aliasMapping": [
     {

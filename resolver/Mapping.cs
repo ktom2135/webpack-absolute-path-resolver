@@ -2,7 +2,7 @@ namespace resolver
 {
     public class Mapping
     {
-        public string AliasName { get; set; }
-        public string MatchPath { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
     }
 }

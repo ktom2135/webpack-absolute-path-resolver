@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using resolver;
 using Xunit;
 
@@ -11,30 +12,30 @@ namespace resolver_test
         {
             Config config = new Config
             {
-                Suffix = ".txt",
+                Suffix = ".js",
                 AliasMapping = new List<Mapping>
                 {
                     new Mapping
                     {
-                        AliasName = "@A",
-                        MatchPath = "pathA"
+                        Name = "@src",
+                        Path = @"D:\git\myReactApp\src"
                     },
                     new Mapping
                     {
-                        AliasName = "@B",
-                        MatchPath = "PathB"
+                        Name = "@comp",
+                        Path = @"D:\git\myReactApp\comp"
                     }
                 }
             };
 
-            string[] fileNames = {"pathA/file-a.txt", "PathB/file-b.txt"};
+            string[] fileNames = { @"D:\git\myReactApp\src\App.js", @"D:\git\myReactApp\comp\list.js" };
 
             List<AbsoluteRecord> absoluteRecords = AbsoluteRecordFactory.Create(config, fileNames);
             Assert.Equal(2, absoluteRecords.Count);
-            Assert.Equal("file-a", absoluteRecords[0].Name);
-            Assert.Equal("@A/file-a", absoluteRecords[0].AliasPath);
-            Assert.Equal("file-b", absoluteRecords[1].Name);
-            Assert.Equal("@B/file-a", absoluteRecords[1].AliasPath);
+            Assert.Equal("App", absoluteRecords[0].Name);
+            Assert.Equal("@src/App", absoluteRecords[0].AliasPath);
+            Assert.Equal("list", absoluteRecords[1].Name);
+            Assert.Equal("@comp/list", absoluteRecords[1].AliasPath);
         }
     }
 
@@ -45,7 +46,20 @@ namespace resolver_test
             List<AbsoluteRecord> result = new List<AbsoluteRecord>();
             foreach (var fileName in fileNames)
             {
-                var record = new AbsoluteRecord();
+                var aliasMapping = config.AliasMapping.Find(am => fileName.Contains(am.Path));
+                if (aliasMapping != null)
+                {
+                    var name = fileName.Split('\\').Last().Replace(config.Suffix, "");
+                    var aliasPath = fileName
+                        .Substring(0, fileName.Length - config.Suffix.Length)
+                        .Replace(aliasMapping.Path, aliasMapping.Name)
+                        .Replace(@"\", "/");
+                    result.Add(new AbsoluteRecord
+                    {
+                        Name = name,
+                        AliasPath = aliasPath
+                    });
+                }
             }
 
             return result;
