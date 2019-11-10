@@ -2,8 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.idea/.idea.webpack-absolute-path-resolver
-/.vs/webpack-absolute-path-resolver/v16/Server/sqlite3
+/.idea/
+/.vs/
 /resolver/bin/Debug/netcoreapp2.2
 /resolver/obj/Debug/netcoreapp2.2
 /resolver/obj
